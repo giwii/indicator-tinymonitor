@@ -68,7 +68,7 @@ static float get_cpu_usage(void)
 	if(*bp != '\n') return -1;
 	*bp = 0;
 
-	printf("%s\n", buffer);
+//	printf("%s\n", buffer);
 
 	token = strtok_r(buffer, " ", &bp);
 
@@ -106,7 +106,7 @@ static float get_mem_usage(void)
 
 	buffer[rc] = 0;
 
-	printf("%s\n", buffer);
+//	printf("%s\n", buffer);
 
 	token = strtok_r(buffer, "\n", &bp);
 	sscanf(token, "%s%ld kB", key, &st.total);
@@ -142,8 +142,10 @@ int main (int argc, char **argv)
 	gtk_init (&argc, &argv);
 
 	/* Indicator */
-	indicator = app_indicator_new ("indicator-tinymonitor", "",
+	indicator = app_indicator_new ("indicator-tinymonitor", "device",
 			APP_INDICATOR_CATEGORY_HARDWARE);
+	app_indicator_set_icon_theme_path(indicator, "/home/new/github/indicator-tinymonitor");
+	app_indicator_set_icon_full(indicator, "device", "device");
 
 	app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
 
