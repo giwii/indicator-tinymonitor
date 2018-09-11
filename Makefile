@@ -8,6 +8,9 @@ objs		+= indicator-tinymonitor.o
 $(bin_PROG):$(objs)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+install:
+	cp $(bin_PROG) ~/linuxcfg/home/tools/bin/
+
 clean:
 	rm *.o
 
